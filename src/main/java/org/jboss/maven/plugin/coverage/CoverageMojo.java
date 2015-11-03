@@ -38,98 +38,87 @@ import org.apache.maven.model.Build;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 
 /**
  * @author <a href="mailto:ales.justin@jboss.org">Ales Justin</a>
- * @goal coverage
- * @phase process-test-classes
- * @requiresDependencyResolution
  */
+@Mojo(name = "coverage", defaultPhase = LifecyclePhase.PROCESS_TEST_CLASSES, requiresDependencyResolution = ResolutionScope.RUNTIME)
 public class CoverageMojo extends AbstractMojo implements Configuration {
     /**
      * The Maven Project Object
-     *
-     * @parameter property="project"
-     * @required
      */
+    @Parameter(required = true, property = "project")
     protected MavenProject project;
 
     /**
      * Module.
-     *
-     * @parameter
      */
+    @Parameter
     protected String module;
 
     /**
      * Tests.
-     *
-     * @parameter
      */
+    @Parameter
     protected boolean tests = true;
 
     /**
      * Exclusion.
-     *
-     * @parameter
      */
+    @Parameter
     protected String exclusion;
 
     /**
      * Interfaces.
-     *
-     * @parameter
      */
+    @Parameter
     protected List<String> interfaces;
 
     /**
      * Coverage file.
-     *
-     * @parameter
      */
+    @Parameter
     protected String coverageFile = "coverage.txt";
 
     /**
      * Repository host.
-     *
-     * @parameter
      */
+    @Parameter
     protected String repositoryHost = "github.com";
 
     /**
      * Repository user.
-     *
-     * @parameter
      */
+    @Parameter
     protected String repositoryUser;
 
     /**
      * Repository project.
-     *
-     * @parameter
      */
+    @Parameter
     protected String repositoryProject;
 
     /**
      * Repository branch.
-     *
-     * @parameter
      */
+    @Parameter
     protected String repositoryBranch = "master";
 
     /**
      * Coverage title.
-     *
-     * @parameter
      */
+    @Parameter
     protected String coverageTitle;
 
     /**
      * Javadoc root.
-     *
-     * @parameter
      */
+    @Parameter
     protected String javadocRoot;
 
     public void execute() throws MojoExecutionException, MojoFailureException {
