@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!-- Parent -->
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>15</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jboss.maven.plugins</groupId>
+    <artifactId>code-coverage-maven-plugin</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+    <name>Code Coverage Plugin</name>
+    <url>http://www.jboss.org</url>
+    <description>Code Coverage Plugin</description>
+
+    <properties>
+        <version.org.javassist>3.18.1-GA</version.org.javassist>
+        <version.maven>3.3.3</version.maven>
+    </properties>
+
+    <dependencyManagement>
+        <!-- The parent pom manages the inter-dependencies of the modules. -->
+        <dependencies>
+
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${version.org.javassist}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-plugin-api</artifactId>
+                <version>${version.maven}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.maven</groupId>
+                <artifactId>maven-core</artifactId>
+                <version>${version.maven}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <organization>
+        <name>JBoss, a division of Red Hat, Inc</name>
+        <url>http://www.jboss.org/</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Ales Justin</name>
+            <email>ales.justin@jboss.org</email>
+            <organization>JBoss, a division of Red Hat, Inc</organization>
+            <organizationUrl>http://www.jboss.org</organizationUrl>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License</name>
+            <url>http://www.gnu.org/copyleft/lesser.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:jboss/maven-code-coverage-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:jboss/maven-code-coverage-plugin.git</developerConnection>
+        <url>scm:git:git@github.com:jboss/maven-code-coverage-plugin.git</url>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
