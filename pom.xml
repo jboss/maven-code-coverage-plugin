@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss.maven.plugins</groupId>
     <artifactId>code-coverage-maven-plugin</artifactId>
-    <version>1.0.0.Final</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
     <name>Code Coverage Plugin</name>
     <url>http://www.jboss.org</url>
@@ -104,7 +104,7 @@
         <connection>scm:git:git@github.com:jboss/maven-code-coverage-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jboss/maven-code-coverage-plugin.git</developerConnection>
         <url>scm:git:git@github.com:jboss/maven-code-coverage-plugin.git</url>
-      <tag>1.0.0.Final</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>
