@@ -27,6 +27,7 @@ import java.lang.reflect.Modifier;
 import java.util.HashSet;
 import java.util.Set;
 
+import javassist.bytecode.AccessFlag;
 import javassist.bytecode.AnnotationsAttribute;
 import javassist.bytecode.ClassFile;
 import javassist.bytecode.MethodInfo;
@@ -45,8 +46,16 @@ public class BaseMethodExclusion implements MethodExclusion {
         EXCLUDES.add("toString@()Ljava/lang/String;");
     }
 
+    public static boolean isPublic(MethodInfo methodInfo) {
+        return Modifier.isPublic(methodInfo.getAccessFlags());
+    }
+
+    public static boolean isBridge(MethodInfo methodInfo) {
+        return ((methodInfo.getAccessFlags() & AccessFlag.BRIDGE) == AccessFlag.BRIDGE);
+    }
+
     public boolean exclude(ClassFile clazz, MethodInfo mi) {
-        if (Modifier.isPublic(mi.getAccessFlags()) == false) {
+        if (isPublic(mi) == false || isBridge(mi)) {
             return true;
         }
 

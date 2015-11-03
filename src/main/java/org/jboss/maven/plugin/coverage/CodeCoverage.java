@@ -235,10 +235,12 @@ public class CodeCoverage {
                     }
                 }
 
-                SignatureAttribute.MethodSignature signature = SignatureAttribute.toMethodSignature(m.getDescriptor());
-                handleMethodSignature(className, m.getName(), firstLine - 1, signature.getReturnType());
-                handleMethodSignature(className, m.getName(), firstLine - 1, signature.getParameterTypes());
-                handleMethodSignature(className, m.getName(), firstLine - 1, signature.getExceptionTypes());
+                if (BaseMethodExclusion.isBridge(m) == false) {
+                    SignatureAttribute.MethodSignature signature = SignatureAttribute.toMethodSignature(m.getDescriptor());
+                    handleMethodSignature(className, m.getName(), firstLine - 1, signature.getReturnType());
+                    handleMethodSignature(className, m.getName(), firstLine - 1, signature.getParameterTypes());
+                    handleMethodSignature(className, m.getName(), firstLine - 1, signature.getExceptionTypes());
+                }
 
                 ParameterAnnotationsAttribute paa = (ParameterAnnotationsAttribute) m.getAttribute(ParameterAnnotationsAttribute.visibleTag);
                 if (paa != null) {
