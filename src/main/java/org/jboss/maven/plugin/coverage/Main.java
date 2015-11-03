@@ -40,7 +40,9 @@ public class Main {
         if (classesToScan.isDirectory() == false)
             throw new IllegalArgumentException("Is not directory: " + classesToScan);
 
-        CodeCoverage.report(new DummyConfiguration(), null, null, new File("").getAbsoluteFile(), classesToScan, FileMethodExclusion.create(classesToScan), args[1]);
+        String[] interfaces = new String[args.length - 1];
+        System.arraycopy(args, 1, interfaces, 0, interfaces.length);
+        CodeCoverage.report(new DummyConfiguration(), null, null, new File("").getAbsoluteFile(), classesToScan, FileMethodExclusion.create(classesToScan), interfaces);
     }
 
     private static class DummyConfiguration implements Configuration {
